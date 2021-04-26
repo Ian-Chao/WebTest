@@ -1,0 +1,67 @@
+<html>
+
+<head>
+<title>Clipboard Test</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+
+<body>
+
+<p>[Test 1] Cut Input</p>
+<input id="inputCut" value="Cut_Input">
+<button id="btnCut">Cut</button>
+
+<script>
+let btn_cut = document.querySelector('#btnCut');
+btn_cut.addEventListener('click', () => {
+	let input_cut = document.querySelector('#inputCut');
+	input_cut.select();
+	if (document.execCommand('cut')) {
+		console.log('Cut_Succeed');
+	}
+})
+</script>
+
+<br>
+<br>
+
+<p>[Test 2] Copy Input</p>
+<input id="inputCopy" value="Copy_Input">
+<button id="btnCopy">Copy</button>
+
+<script>
+let btn_copy = document.querySelector('#btnCopy');
+btn_copy.addEventListener('click', () => {
+	let input_copy = document.querySelector('#inputCopy');
+	input_copy.select();
+	if (document.execCommand('copy')) {
+		console.log('Copy_Succeed');
+	}
+})
+</script>
+
+<br>
+<br>
+
+<p>[Test 3] Copy Div</p>
+<div id="val">Clipboard_Div</div>
+<button id="btnDiv">Click</button>
+<script>
+let btn_div = document.querySelector('#btnDiv');
+let val = document.querySelector('#val').innerHTML;
+btn_div.addEventListener('click',() => {
+	let new_input = document.createElement('input');
+  new_input.setAttribute('readonly', 'readonly');
+  new_input.setAttribute('value', val);
+  document.body.appendChild(new_input);
+	new_input.select();
+	if (document.execCommand('copy')) {
+		console.log('Div_Succeed');
+	}
+  document.body.removeChild(new_input);
+})
+</script>
+
+</body>
+
+</html>
