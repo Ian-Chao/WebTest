@@ -62,6 +62,40 @@ btn_div.addEventListener('click',() => {
 })
 </script>
 
+<p>[Test 3] Navigator</p>
+<section>
+  <button id="navCopy"><strong>Copy</strong><br><em>(write to clipboard)</em></button>
+  <button id="navPaste"><strong>Paste</strong><br><em>(read from clipboard)</em></button>
+</section>
+
+<textarea id="out" placeholder="yingcao"></textarea>
+
+<script>
+navCopy.onclick = function() {
+	navigator.clipboard.writeText(out.value)
+  	.then(() => {
+    	log('Text copied.');
+    })
+  	.catch(log);
+};
+
+/** Read from clipboard when clicking the Paste button */
+navPaste.onclick = function() {
+	navigator.clipboard.readText()
+  	.then(text => {
+    	out.value = text;
+      log('Text pasted.');
+    })
+  	.catch(() => {
+    	log('Failed to read clipboard');
+    });
+};
+</script>
+
+
+
+
+
 </body>
 
 </html>
