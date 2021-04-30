@@ -74,9 +74,11 @@ btn_div.addEventListener('click',() => {
 navCopy.onclick = function() {
 	navigator.clipboard.writeText(out.value)
   	.then(() => {
-    	log('Text copied.');
+    	console.log(out.value);
     })
-  	.catch(log);
+  	.catch(() => {
+    	console.log('Failed to write clipboard');
+    });
 };
 
 /** Read from clipboard when clicking the Paste button */
@@ -84,10 +86,10 @@ navPaste.onclick = function() {
 	navigator.clipboard.readText()
   	.then(text => {
     	out.value = text;
-      log('Text pasted.');
+      console.log(out.value);
     })
   	.catch(() => {
-    	log('Failed to read clipboard');
+    	console.log('Failed to read clipboard');
     });
 };
 </script>
