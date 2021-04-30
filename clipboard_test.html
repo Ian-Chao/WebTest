@@ -94,6 +94,15 @@ navPaste.onclick = function() {
 };
 </script>
 
+<script>
+navigator.clipboard.readText()
+  	.then(tt => {
+      console.log(tt);
+    })
+  	.catch(() => {
+    	console.log('Failed to read clipboard');
+    });
+</script>
 </body>
 
 </html>
